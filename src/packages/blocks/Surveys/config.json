@@ -1,0 +1,65 @@
+{
+  "id": "Surveys",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/Surveys",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Surveys"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Surveys": {
+        "file": "Surveys.tsx",
+        "extends": "SurveysController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "SurveysController",
+            "path": "./SurveysController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./SurveysController"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Surveys"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Surveys": {
+        "file": "Surveys.web.tsx",
+        "extends": "SurveysController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "SurveysController",
+            "path": "./SurveysController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./SurveysController"
+          }
+        ]
+      }
+    }
+  }
+}

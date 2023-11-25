@@ -1,0 +1,65 @@
+{
+  "id": "MultipleStepRegistrationForm2",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/MultipleStepRegistrationForm2",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "MultipleStepRegistrationForm2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "MultipleStepRegistrationForm2": {
+        "file": "MultipleStepRegistrationForm2.tsx",
+        "extends": "MultipleStepRegistrationForm2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "MultipleStepRegistrationForm2Controller",
+            "path": "./MultipleStepRegistrationForm2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./MultipleStepRegistrationForm2Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "MultipleStepRegistrationForm2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "MultipleStepRegistrationForm2": {
+        "file": "MultipleStepRegistrationForm2.web.tsx",
+        "extends": "MultipleStepRegistrationForm2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "MultipleStepRegistrationForm2Controller",
+            "path": "./MultipleStepRegistrationForm2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./MultipleStepRegistrationForm2Controller"
+          }
+        ]
+      }
+    }
+  }
+}

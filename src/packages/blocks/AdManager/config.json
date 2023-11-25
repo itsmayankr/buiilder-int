@@ -1,0 +1,65 @@
+{
+  "id": "AdManager",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/AdManager",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "AdManager"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "AdManager": {
+        "file": "AdManager.tsx",
+        "extends": "AdManagerController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "AdManagerController",
+            "path": "./AdManagerController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./AdManagerController"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "AdManager"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "AdManager": {
+        "file": "AdManager.web.tsx",
+        "extends": "AdManagerController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "AdManagerController",
+            "path": "./AdManagerController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./AdManagerController"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "GuestLogin3",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/GuestLogin3",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "GuestLogin3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "GuestLogin3": {
+        "file": "GuestLogin3.tsx",
+        "extends": "GuestLogin3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "GuestLogin3Controller",
+            "path": "./GuestLogin3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./GuestLogin3Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "GuestLogin3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "GuestLogin3": {
+        "file": "GuestLogin3.web.tsx",
+        "extends": "GuestLogin3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "GuestLogin3Controller",
+            "path": "./GuestLogin3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./GuestLogin3Controller"
+          }
+        ]
+      }
+    }
+  }
+}

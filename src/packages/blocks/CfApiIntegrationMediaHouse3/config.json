@@ -1,0 +1,65 @@
+{
+  "id": "CfApiIntegrationMediaHouse3",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/CfApiIntegrationMediaHouse3",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfApiIntegrationMediaHouse3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfApiIntegrationMediaHouse3": {
+        "file": "CfApiIntegrationMediaHouse3.tsx",
+        "extends": "CfApiIntegrationMediaHouse3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfApiIntegrationMediaHouse3Controller",
+            "path": "./CfApiIntegrationMediaHouse3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfApiIntegrationMediaHouse3Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfApiIntegrationMediaHouse3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfApiIntegrationMediaHouse3": {
+        "file": "CfApiIntegrationMediaHouse3.web.tsx",
+        "extends": "CfApiIntegrationMediaHouse3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfApiIntegrationMediaHouse3Controller",
+            "path": "./CfApiIntegrationMediaHouse3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfApiIntegrationMediaHouse3Controller"
+          }
+        ]
+      }
+    }
+  }
+}

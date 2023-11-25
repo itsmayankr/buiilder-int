@@ -1,0 +1,65 @@
+{
+  "id": "Download",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/Download",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Download"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Download": {
+        "file": "Download.tsx",
+        "extends": "DownloadController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "DownloadController",
+            "path": "./DownloadController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./DownloadController"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Download"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Download": {
+        "file": "Download.web.tsx",
+        "extends": "DownloadController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "DownloadController",
+            "path": "./DownloadController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./DownloadController"
+          }
+        ]
+      }
+    }
+  }
+}

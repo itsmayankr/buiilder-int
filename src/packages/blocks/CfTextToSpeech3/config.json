@@ -1,0 +1,65 @@
+{
+  "id": "CfTextToSpeech3",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/CfTextToSpeech3",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfTextToSpeech3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfTextToSpeech3": {
+        "file": "CfTextToSpeech3.tsx",
+        "extends": "CfTextToSpeech3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfTextToSpeech3Controller",
+            "path": "./CfTextToSpeech3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfTextToSpeech3Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfTextToSpeech3"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfTextToSpeech3": {
+        "file": "CfTextToSpeech3.web.tsx",
+        "extends": "CfTextToSpeech3Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfTextToSpeech3Controller",
+            "path": "./CfTextToSpeech3Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfTextToSpeech3Controller"
+          }
+        ]
+      }
+    }
+  }
+}

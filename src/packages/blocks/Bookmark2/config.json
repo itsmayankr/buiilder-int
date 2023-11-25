@@ -1,0 +1,65 @@
+{
+  "id": "Bookmark2",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/Bookmark2",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Bookmark2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Bookmark2": {
+        "file": "Bookmark2.tsx",
+        "extends": "Bookmark2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "Bookmark2Controller",
+            "path": "./Bookmark2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./Bookmark2Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "Bookmark2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "Bookmark2": {
+        "file": "Bookmark2.web.tsx",
+        "extends": "Bookmark2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "Bookmark2Controller",
+            "path": "./Bookmark2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./Bookmark2Controller"
+          }
+        ]
+      }
+    }
+  }
+}

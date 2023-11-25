@@ -1,0 +1,65 @@
+{
+  "id": "CfApiToMicrosoftAzuresVoiceCapability2",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/CfApiToMicrosoftAzuresVoiceCapability2",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfApiToMicrosoftAzuresVoiceCapability2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfApiToMicrosoftAzuresVoiceCapability2": {
+        "file": "CfApiToMicrosoftAzuresVoiceCapability2.tsx",
+        "extends": "CfApiToMicrosoftAzuresVoiceCapability2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfApiToMicrosoftAzuresVoiceCapability2Controller",
+            "path": "./CfApiToMicrosoftAzuresVoiceCapability2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfApiToMicrosoftAzuresVoiceCapability2Controller"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CfApiToMicrosoftAzuresVoiceCapability2"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CfApiToMicrosoftAzuresVoiceCapability2": {
+        "file": "CfApiToMicrosoftAzuresVoiceCapability2.web.tsx",
+        "extends": "CfApiToMicrosoftAzuresVoiceCapability2Controller",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CfApiToMicrosoftAzuresVoiceCapability2Controller",
+            "path": "./CfApiToMicrosoftAzuresVoiceCapability2Controller"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CfApiToMicrosoftAzuresVoiceCapability2Controller"
+          }
+        ]
+      }
+    }
+  }
+}

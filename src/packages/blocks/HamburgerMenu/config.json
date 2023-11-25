@@ -1,0 +1,65 @@
+{
+  "id": "HamburgerMenu",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/HamburgerMenu",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "HamburgerMenu"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "HamburgerMenu": {
+        "file": "HamburgerMenu.tsx",
+        "extends": "HamburgerMenuController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "HamburgerMenuController",
+            "path": "./HamburgerMenuController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./HamburgerMenuController"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "HamburgerMenu"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "HamburgerMenu": {
+        "file": "HamburgerMenu.web.tsx",
+        "extends": "HamburgerMenuController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "HamburgerMenuController",
+            "path": "./HamburgerMenuController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./HamburgerMenuController"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "CustomAdvertisements",
+  "version": "0.0.2",
+  "status": "preAlpha",
+  "path": "./packages/blocks/CustomAdvertisements",
+  "assembler-adapters": [],
+  "mobile": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CustomAdvertisements"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CustomAdvertisements": {
+        "file": "CustomAdvertisements.tsx",
+        "extends": "CustomAdvertisementsController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CustomAdvertisementsController",
+            "path": "./CustomAdvertisementsController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CustomAdvertisementsController"
+          }
+        ]
+      }
+    }
+  },
+  "web": {
+    "merge-engine-navigation": {},
+    "assembler-exports": [
+      "CustomAdvertisements"
+    ],
+    "assembler-dependencies": [],
+    "catalog-dependencies": [
+      "core",
+      "utilities"
+    ],
+    "assembler-devDependencies": [],
+    "merge-engine-screens": {
+      "CustomAdvertisements": {
+        "file": "CustomAdvertisements.web.tsx",
+        "extends": "CustomAdvertisementsController",
+        "ui-elements": [],
+        "imports": [
+          {
+            "value": "CustomAdvertisementsController",
+            "path": "./CustomAdvertisementsController"
+          },
+          {
+            "value": "{Props}",
+            "path": "./CustomAdvertisementsController"
+          }
+        ]
+      }
+    }
+  }
+}
