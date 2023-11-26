@@ -2,7 +2,7 @@
 import moment from "moment";
 import Toast from "react-native-toast-message";
 import { BlockComponent } from "../../../framework/src/BlockComponent";
-import { COLORS } from "../../utilities/src/Globals";
+import { COLORS } from "../../SS-utilities/src/Globals";
 import { IBlock } from "../../../framework/src/IBlock";
 import { Message } from "../../../framework/src/Message";
 import MessageEnum, {
@@ -18,7 +18,7 @@ import {
   SelectablePaymentOption
 } from "./types";
 import { NavigationProp } from "@react-navigation/native";
-import { RootStackParamList } from "../../utilities/src/RootStackParamList";
+import { RootStackParamList } from "../../SS-utilities/src/RootStackParamList";
 
 
 export type catalogueItemDetails = {

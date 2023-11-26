@@ -16,30 +16,30 @@ import {
 import moment from "moment";
 import { showAlert } from "react-native-customisable-alert";
 import { SafeAreaView } from "react-native-safe-area-context";
-import FONTS from "../../utilities/src/Fonts/Fonts";
+import FONTS from "../../SS-utilities/src/Fonts/Fonts";
 import Scale from "../../../components/src/Scale";
-import { COLORS } from "../../utilities/src/Globals";
+import { COLORS } from "../../SS-utilities/src/Globals";
 import { LeftArrow } from "../../landingpage/src/assets";
-import CustomButton from "../../utilities/src/CustomButton";
+import CustomButton from "../../SS-utilities/src/CustomButton";
 
-import { width } from "../../utilities/src/Dimensions";
+import { width } from "../../SS-utilities/src/Dimensions";
 const baseURL = require("../../../framework/src/config.js");
 import AddAppointmentPaymentController, {
   Props
 } from "./AddAppointmentPaymentController";
-import { ClosableSection } from "../../utilities/src/ClosableSection";
+import { ClosableSection } from "../../SS-utilities/src/ClosableSection";
 import {
   AppointmentType,
   PaymentDetailsType,
   SelectablePaymentOption
 } from "./types";
-import AnimatedTextInput from "../../utilities/src/AnimatedTextInput";
+import AnimatedTextInput from "../../SS-utilities/src/AnimatedTextInput";
 import { heightFromPercentage } from "framework/src/Utilities";
 
 const { width: ScreenWidth } = Dimensions.get("screen");
 export const configJSON = require("./config");
 
-import StripePayments from "../../stripepayments/src/StripePayments";
+// import StripePayments from "../../stripepayments/src/StripePayments";
 
 
   // Customizable Area End
@@ -356,7 +356,7 @@ export default class AddAppointmentPayment extends AddAppointmentPaymentControll
             style={{ flex: 1, backgroundColor: COLORS.white }}
           >
             {!this.state.isCheckout && this.renderWebView()}
-             <StripePayments onSuccess={this.onSuccess} isModalOpen={this.state.isModalOpen} setIsModalOpen={this.setIsModalOpen} paymentDetails={this.state.paymentDetails}  personalDetails={this.props.route.params.personalDetails}  id={this.props.route.params.id} navigation={this.props.navigation}/>
+             {/* <StripePayments onSuccess={this.onSuccess} isModalOpen={this.state.isModalOpen} setIsModalOpen={this.setIsModalOpen} paymentDetails={this.state.paymentDetails}  personalDetails={this.props.route.params.personalDetails}  id={this.props.route.params.id} navigation={this.props.navigation}/> */}
             {this.header()}
 
             <ScrollView style={styles.container} nestedScrollEnabled>

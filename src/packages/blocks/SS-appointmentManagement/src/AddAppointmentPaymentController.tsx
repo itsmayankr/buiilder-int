@@ -20,7 +20,7 @@ import {
   PersonalDetailsType,
   SelectablePaymentOption
 } from "./types";
-import { RootStackParamList } from "../../utilities/src/RootStackParamList";
+import { RootStackParamList } from "../../SS-utilities/src/RootStackParamList";
 import { NavigationProp } from "@react-navigation/native";
 import { Alert, BackHandler } from "react-native";
 

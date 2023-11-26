@@ -12,13 +12,13 @@ import {
 import moment from "moment";
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import FONTS from "../../utilities/src/Fonts/Fonts";
+import FONTS from "../../SS-utilities/src/Fonts/Fonts";
 import Scale from "../../../components/src/Scale";
-import { COLORS } from "../../utilities/src/Globals";
+import { COLORS } from "../../SS-utilities/src/Globals";
 
-import CustomButton from "../../utilities/src/CustomButton";
+import CustomButton from "../../SS-utilities/src/CustomButton";
 
-import { height, width } from "../../utilities/src/Dimensions";
+import { height, width } from "../../SS-utilities/src/Dimensions";
 
 import AddAppointmentDetailsController, {
   Props
@@ -109,6 +109,7 @@ export default class AddAppointmentDetails extends AddAppointmentDetailsControll
           </View>
         </View>
         <TouchableOpacity
+          testID="btnBack"
           style={{ paddingBottom: 35, alignItems: "center", width: "100%" }}
           onPress={this.handlePressBack}
         >
@@ -158,8 +159,9 @@ export default class AddAppointmentDetails extends AddAppointmentDetailsControll
           loading={false}
           text={"CHANGE THE PAYMENT METHOD"}
           onPress={this.changePaymentMethod}
+          testID="changePaymentMethodBtn"
         />
-        <TouchableOpacity onPress={this.cancelTransaction}>
+        <TouchableOpacity testID="cancelTransactionBtn" onPress={this.cancelTransaction}>
           <Text style={styles.regularTextGray}>Cancel Transaction?</Text>
         </TouchableOpacity>
       </View>

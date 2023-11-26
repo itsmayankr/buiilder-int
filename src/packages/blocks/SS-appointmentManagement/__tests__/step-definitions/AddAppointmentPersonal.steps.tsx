@@ -9,36 +9,15 @@ import * as helpers from "../../../../framework/src/Helpers";
 import React from "react";
 import AddAppointmentPersonal from "../../src/AddAppointmentPersonal";
 
-const navigation = require("react-navigation");
 
-const screenProps = {
-  navigation: {
-    addListener: jest.fn().mockImplementation((event, callback) => {
-      if (event === "willFocus") {
-        callback();
-      }
-    }),
-    navigate: jest.fn(),
-    goBack: jest.fn(),
-    dispatch: jest.fn(),
-    replace: jest.fn(),
-    trim: jest.fn(),
-    props: jest.fn(),
-    Alert: jest.fn(),
-    filter: jest.fn()
-  },
-  id: "AddAppointmentPersonal",
-  route: {
-    params: {
-      selectedTime: { date: "", time: "" },
-      id: "string",
-      title: "string",
-      price: 11,
-      duration: 15,
-      image: "string",
-      paymentType: null
-    }
-  }
+const mockedCanGoBack = jest.fn().mockReturnValue(true);
+
+const mockedGoBack = jest.fn();
+
+const mockedNavigation = {
+  navigate: mockedGoBack,
+  canGoBack: mockedCanGoBack,
+  goBack: mockedGoBack,
 };
 
 const feature = loadFeature(
@@ -55,83 +34,96 @@ defineFeature(feature, (test) => {
   test("User navigates to AddAppointmentPersonal", ({ given, when, then }) => {
     let AddAppointmentPersonalWrapper: ShallowWrapper;
     let instance: AddAppointmentPersonal;
+    let formikWrapper;
 
     given("I am a User loading AddAppointmentPersonal", () => {
       AddAppointmentPersonalWrapper = shallow(
-        <AddAppointmentPersonal {...screenProps} />
+        <AddAppointmentPersonal
+          navigation={mockedNavigation as any}
+          id={""}
+          route={{
+            params: {
+              id: "",
+              selectedTime: {
+                date: "",
+                time: "",
+                id: 0,
+              },
+              title: "",
+              price: 0,
+              image: "",
+              duration: 0,
+              currentDate: new Date(),
+              paymentType: null,
+              paymentMethod: "Stripe",
+              currency: {
+                id: 0,
+                name: "",
+                symbol: "",
+              },
+              timeZone: undefined,
+            },
+          }}
+        />
       );
       expect(AddAppointmentPersonalWrapper).toBeTruthy();
-      instance =
-        AddAppointmentPersonalWrapper.instance() as AddAppointmentPersonal;
     });
 
     when("I navigate to the AddAppointmentPersonal", () => {
-      instance =
-        AddAppointmentPersonalWrapper.instance() as AddAppointmentPersonal;
+      instance = AddAppointmentPersonalWrapper.instance() as AddAppointmentPersonal;
+
     });
 
     then("AddAppointmentPersonal will load with out errors", () => {
-      expect(AddAppointmentPersonalWrapper).toBeTruthy();
+
 
       let btnComponent2 = AddAppointmentPersonalWrapper.find("Formik")
         .dive()
         .findWhere((node) => node.prop("testID") === "btnBack");
 
-      btnComponent2.simulate("onPress");
+      btnComponent2.simulate("press");
 
-      let textInputComponentName = AddAppointmentPersonalWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnName");
-      textInputComponentName.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentName.prop("onChangeText")("abc");
-      expect(textInputComponentName.prop("onChangeText")).toBeDefined();
-      textInputComponentName.prop("onBlur")({ target: { name: "" } });
 
-      let textInputComponentEmail = AddAppointmentPersonalWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnEmail");
-      textInputComponentEmail.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentEmail.prop("onChangeText")("abc");
-      expect(textInputComponentEmail.prop("onChangeText")).toBeDefined();
-      textInputComponentEmail.prop("onBlur")({ target: { name: "" } });
+      expect(AddAppointmentPersonalWrapper).toBeTruthy();
+      const btnName = AddAppointmentPersonalWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnName");
+      btnName.simulate('changeText', { target: { value: 'John Doe' } });
+      btnName.simulate('blur');
 
-      let textInputComponentPhone = AddAppointmentPersonalWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnPhone");
-      textInputComponentPhone.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentPhone.prop("onChangeText")("abc");
-      expect(textInputComponentPhone.prop("onChangeText")).toBeDefined();
-      textInputComponentPhone.prop("onBlur")({ target: { name: "" } });
+      const nameError = AddAppointmentPersonalWrapper.find("Formik").dive().find('.nameError');
+      expect(nameError.exists()).toBeFalsy();
+        
 
-      let textInputComponentComment = AddAppointmentPersonalWrapper.find(
-        "Formik"
-      )
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnComment");
-      textInputComponentComment.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentComment.prop("onChangeText")("abc");
-      expect(textInputComponentComment.prop("onChangeText")).toBeDefined();
-      textInputComponentComment.prop("onBlur")({ target: { name: "" } });
-      let btnComponent3 = AddAppointmentPersonalWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnSubmit");
+      const btnEmail = AddAppointmentPersonalWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnEmail");
+      btnEmail.simulate('changeText', { target: { value: 'example@email.com' } });
+      btnEmail.simulate('blur');
 
-      btnComponent3.simulate("onPress");
+      const emailError = AddAppointmentPersonalWrapper.find("Formik").dive().find('.emailError');
+      expect(emailError.exists()).toBeFalsy();
+        
+
+      const btnPhone = AddAppointmentPersonalWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnPhone");
+      btnPhone.simulate('changeText', { target: { value: '9876543218' } });
+      btnPhone.simulate('blur');
+
+      const phoneError = AddAppointmentPersonalWrapper.find("Formik").dive().find('.phoneError');
+      expect(phoneError.exists()).toBeFalsy();
+        
+
+      const btnComment = AddAppointmentPersonalWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnComment");
+      btnComment.simulate('changeText', { target: { value: 'John Doe' } });
+      btnComment.simulate('blur');
+
+      const commentError = AddAppointmentPersonalWrapper.find("Formik").dive().find('.commentError');
+      expect(commentError.exists()).toBeFalsy();
+
+
+      const btnSubmit = AddAppointmentPersonalWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnSubmit");
+      btnSubmit.simulate('press');
+
     });
 
     then("I can leave the screen with out errors", () => {
-      instance.componentWillUnmount();
       expect(AddAppointmentPersonalWrapper).toBeTruthy();
-
-      instance.onPressProceed("2");
     });
   });
 });

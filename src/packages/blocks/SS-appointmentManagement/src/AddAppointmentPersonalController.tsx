@@ -8,7 +8,7 @@ import MessageEnum, {
 import { runEngine } from "../../../framework/src/RunEngine";
 import { PersonalDetailsType } from "./types";
 import { NavigationProp } from "@react-navigation/native";
-import { RootStackParamList } from "../../utilities/src/RootStackParamList";
+import { RootStackParamList } from "../../SS-utilities/src/RootStackParamList";
 
 // Customizable Area Start
 export type catalogueItemDetails = {

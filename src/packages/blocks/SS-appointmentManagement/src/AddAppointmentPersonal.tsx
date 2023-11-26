@@ -12,22 +12,22 @@ import {
 } from "react-native";
 import moment from "moment";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { COLORS } from "../../utilities/src/Globals";
+import { COLORS } from "../../SS-utilities/src/Globals";
 
 import { Formik } from "formik";
-import FONTS from "../../utilities/src/Fonts/Fonts";
+import FONTS from "../../SS-utilities/src/Fonts/Fonts";
 import Scale from "../../../components/src/Scale";
 import { LeftArrow } from "../../landingpage/src/assets";
-import CustomButton from "../../utilities/src/CustomButton";
+import CustomButton from "../../SS-utilities/src/CustomButton";
 
-import { width } from "../../utilities/src/Dimensions";
+import { width } from "../../SS-utilities/src/Dimensions";
 
 import AddAppointmentPersonalController, {
   Props
 } from "./AddAppointmentPersonalController";
-import { ClosableSection } from "../../utilities/src/ClosableSection";
+import { ClosableSection } from "../../SS-utilities/src/ClosableSection";
 import { PersonalDetailsType } from "./types";
-import AnimatedTextInput from "../../utilities/src/AnimatedTextInput";
+import AnimatedTextInput from "../../SS-utilities/src/AnimatedTextInput";
 
 const { width: ScreenWidth } = Dimensions.get("screen");
 // Customizable Area End

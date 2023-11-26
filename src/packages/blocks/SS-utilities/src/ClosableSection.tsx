@@ -10,7 +10,7 @@ import {
 import FONTS from "./Fonts/Fonts";
 import Scale from "../../../components/src/Scale";
 import { COLORS } from "./Globals";
-import { ChevronUpBig } from "../../appointmentmanagement/src/assets";
+import { ChevronUpBig } from "../../SS-appointmentManagement/src/assets";
 
 type ClosableSectionProps = {
   title?: string;

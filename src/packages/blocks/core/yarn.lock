@@ -15338,6 +15338,8 @@ react-native-text-size@4.0.0-rc.1:
 
 react-native-track-player@^2.1.2:
   version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-2.1.4.tgz#5e75000e382c4b8ac770b53cd6463b191c38c5ea"
+  integrity sha512-pfco6xrUCCdsfazRg7hJS+V9h+JZ24bj2ZNt5Af46wwmIpmD0lYT2Ekr6ggH6/qnCcfDBeNIK5XsrtQCPCaujg==
 
 react-native-ui-lib@6.11.2:
   version "6.11.2"

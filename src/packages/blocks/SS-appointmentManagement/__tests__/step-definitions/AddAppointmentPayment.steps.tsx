@@ -10,33 +10,53 @@ import React from "react";
 import AddAppointmentPayment from "../../src/AddAppointmentPayment";
 import { Message } from "../../../../framework/src/Message";
 import MessageEnum, {
-  getName
+  getName,
 } from "../../../../framework/src/Messages/MessageEnum";
 import { runEngine } from "../../../../framework/src/RunEngine";
 
-const navigation = require("react-navigation");
 
-const screenProps = {
-  navigation: navigation,
-  id: "AddAppointmentPayment",
-  route: {
-    params: {
-      personalDetails: {
-        name: "TEST",
-        email: "TEST",
-        phone: "TEST",
-        comment: "TEST"
-      },
-      selectedTime: { date: "", time: "" },
-      id: "string",
-      title: "string",
-      price: 11,
-      duration: 15,
-      image: "string",
-      paymentType: null
-    }
+
+const mockedCanGoBack = jest.fn().mockReturnValue(true);
+
+const mockedGoBack = jest.fn();
+
+const mockAddListener = jest.fn((event, callback) => {
+  if (event === "focus") {
+    // Simulate calling the callback when the 'focus' event is triggered
+    callback();
   }
+});
+
+const mockedNavigation = {
+  navigate: mockedGoBack,
+  canGoBack: mockedCanGoBack,
+  goBack: mockedGoBack,
+  addListener: mockAddListener,
 };
+
+jest.mock('@react-native-community/async-storage-backend-legacy', () => {
+  return jest.fn().mockImplementation(() => {
+    return {
+      setItem: jest.fn(),
+      getItem: jest.fn(),
+      removeItem: jest.fn(),
+      // ... other methods you might use
+    };
+  });
+});
+
+jest.mock('@react-native-community/async-storage', () => {
+  return {
+    create: jest.fn().mockImplementation(() => {
+      return {
+        setItem: jest.fn(),
+        getItem: jest.fn(),
+        removeItem: jest.fn(),
+        // ... other methods you might use
+      };
+    }),
+  };
+});
 
 const feature = loadFeature(
   "./__tests__/features/AddAppointmentPayment.feature"
@@ -55,7 +75,39 @@ defineFeature(feature, (test) => {
 
     given("I am a User loading AddAppointmentPayment", () => {
       AddAppointmentWrapper = shallow(
-        <AddAppointmentPayment {...screenProps} />
+        <AddAppointmentPayment
+          navigation={mockedNavigation as any}
+          id={""}
+          route={{
+            params: {
+              id: "",
+              selectedTime: {
+                date: "",
+                time: "",
+                id: 0,
+              },
+              title: "",
+              price: 0,
+              duration: 0,
+              image: "",
+              personalDetails: {
+                name: "",
+                email: "",
+                phone: "",
+                comment: "",
+              },
+              paymentType: 'pay_in_person',
+              paymentMethod: "Stripe",
+              currency: {
+                id: 0,
+                name: "",
+                symbol: "",
+              },
+              currentDate: new Date(),
+              timeZone: undefined,
+            },
+          }}
+        />
       );
       expect(AddAppointmentWrapper).toBeTruthy();
       instance = AddAppointmentWrapper.instance() as AddAppointmentPayment;
@@ -66,82 +118,63 @@ defineFeature(feature, (test) => {
     });
 
     then("AddAppointmentPayment will load with out errors", () => {
-      let textInputComponentName = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtCountry");
-      textInputComponentName.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentName.prop("onChangeText")("abc");
-      expect(textInputComponentName.prop("onChangeText")).toBeDefined();
-      textInputComponentName.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentNo = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtNo");
-      textInputComponentNo.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentNo.prop("onChangeText")("abc");
-      expect(textInputComponentNo.prop("onChangeText")).toBeDefined();
-      textInputComponentNo.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentAddr1 = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtAddress1");
-      textInputComponentAddr1.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentAddr1.prop("onChangeText")("abc");
-      expect(textInputComponentAddr1.prop("onChangeText")).toBeDefined();
-      textInputComponentAddr1.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentAddr2 = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtAddress2");
-      textInputComponentAddr2.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentAddr2.prop("onChangeText")("abc");
-      expect(textInputComponentAddr2.prop("onChangeText")).toBeDefined();
-      textInputComponentAddr2.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentCity = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtCity");
-      textInputComponentCity.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentCity.prop("onChangeText")("abc");
-      expect(textInputComponentCity.prop("onChangeText")).toBeDefined();
-      textInputComponentCity.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentState = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtState");
-      textInputComponentState.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentState.prop("onChangeText")("abc");
-      expect(textInputComponentState.prop("onChangeText")).toBeDefined();
-      textInputComponentState.prop("onBlur")({ target: { name: "" } });
-      textInputComponentCity.prop("onBlur")({ target: { name: "" } });
-      let textInputComponentZip = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "txtZip");
-      textInputComponentZip.simulate("change", {
-        target: { name: "full_name", value: "abc" }
-      });
-      textInputComponentZip.prop("onChangeText")("abc");
-      expect(textInputComponentZip.prop("onChangeText")).toBeDefined();
-      textInputComponentZip.prop("onBlur")({ target: { name: "" } });
-      let btnComponent2 = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnBack");
+   
+      const txtCountry = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtCountry");
+      txtCountry.simulate('changeText', { target: { value: 'India' } });
+      txtCountry.simulate('blur');
 
-      btnComponent2.simulate("onPress");
-      let btnComponent3 = AddAppointmentWrapper.find("Formik")
-        .dive()
-        .findWhere((node) => node.prop("testID") === "btnSubmit");
+      const countryError = AddAppointmentWrapper.find("Formik").dive().find('.countryError');
+      expect(countryError.exists()).toBeFalsy();
 
-      btnComponent3.simulate("onPress");
-      instance.customAlert();
-      instance.selectPaymentOption({ label: "test", value: "payNow" });
+      const txtNo = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtNo");
+      txtNo.simulate('changeText', { target: { value: '2345678908765' } });
+      txtNo.simulate('blur');
+
+      const noError = AddAppointmentWrapper.find("Formik").dive().find('.noError');
+      expect(noError.exists()).toBeFalsy();
+
+      const txtAddress1 = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtAddress1");
+      txtAddress1.simulate('changeText', { target: { value: ' yjhkb  bjk jukb uy g' } });
+      txtAddress1.simulate('blur');
+
+      const addressLine1Error = AddAppointmentWrapper.find("Formik").dive().find('.addressLine1Error');
+      expect(addressLine1Error.exists()).toBeFalsy();
+
+
+      const txtAddress2 = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtAddress2");
+      txtAddress2.simulate('changeText', { target: { value: ' hivb kjb huv jhb hjb n' } });
+      txtAddress2.simulate('blur');
+
+      const addressLine2Error = AddAppointmentWrapper.find("Formik").dive().find('.addressLine2Error');
+      expect(addressLine2Error.exists()).toBeFalsy();
+
+
+      const txtCity = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtCity");
+      txtCity.simulate('changeText', { target: { value: 'delhi' } });
+      txtCity.simulate('blur');
+
+      const cityError = AddAppointmentWrapper.find("Formik").dive().find('.cityError');
+      expect(cityError.exists()).toBeFalsy();
+
+      const txtState = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtState");
+      txtState.simulate('changeText', { target: { value: 'new delhi' } });
+      txtState.simulate('blur');
+
+      const stateError = AddAppointmentWrapper.find("Formik").dive().find('.stateError');
+      expect(stateError.exists()).toBeFalsy();
+
+      const txtZip = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "txtZip");
+      txtZip.simulate('changeText', { target: { value: '5473453' } });
+      txtZip.simulate('blur');
+
+      const zipError = AddAppointmentWrapper.find("Formik").dive().find('.zipError');
+      expect(zipError.exists()).toBeFalsy();
+
+
+      const btnSubmit = AddAppointmentWrapper.find("Formik").dive().findWhere(node => node.prop("testID") === "btnSubmit");
+      btnSubmit.simulate('press');
+
+
       const tokenMsg: Message = new Message(
         getName(MessageEnum.SessionResponseMessage)
       );
@@ -201,42 +234,10 @@ defineFeature(feature, (test) => {
       );
       instance.submitBookingCallId = createConttactUsAPI3.messageId;
       runEngine.sendMessage("Unit Test", createConttactUsAPI3);
-      instance.handleCloseAlert();
-      instance.handleSubmitBooking({
-        time_slot_id: "string",
-        catalogue_id: "string",
-        payment_mode: "pay_later",
-        appointment_date: "string",
-        personal_detail_attributes: {
-          full_name: "string",
-          full_phone_number: "string",
-          email: "string",
-          comment: "string"
-        },
-        billing_address_attributes: {
-          country: "string",
-          city: "string",
-          state: "string",
-          flat_number: "string",
-          address_line_2: "string",
-          address_line_1: "string",
-          zip_code: "string"
-        }
-      });
-      instance.apiCall({
-        setApiCallId: "submitBookingCallID",
-        header: { "Content-Type": "application/json" },
-        method: "GET",
-        endPoint: "bx_block_catalogue/catalogues",
-        body: null
-      });
     });
 
     then("I can leave the screen with out errors", () => {
-      instance.componentWillUnmount();
       expect(AddAppointmentWrapper).toBeTruthy();
-
-      instance.render();
     });
   });
 });

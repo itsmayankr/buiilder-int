@@ -9,49 +9,18 @@ import * as helpers from "../../../../framework/src/Helpers";
 import React from "react";
 import { Message } from "../../../../framework/src/Message";
 import MessageEnum, {
-  getName
+  getName,
 } from "../../../../framework/src/Messages/MessageEnum";
 import AddAppointmentDetails from "../../src/AddAppointmentDetails";
 
-const navigation = require("react-navigation");
+const mockedCanGoBack = jest.fn().mockReturnValue(true);
 
-const screenProps = {
-  navigation: {
-    addListener: jest.fn().mockImplementation((event, callback) => {
-      if (event === "willFocus") {
-        callback();
-      }
-    }),
-    navigate: jest.fn(),
-    goBack: jest.fn(),
-    dispatch: jest.fn(),
-    replace: jest.fn(),
-    trim: jest.fn(),
-    props: jest.fn(),
-    Alert: jest.fn(),
-    filter: jest.fn()
-  },
-  id: "AddAppointmentDetails",
-  route: {
-    params: {
-      orderID: "111234",
-      orderDate: "12-12-2222",
-      success: true,
-      personalDetails: {
-        name: "TEST",
-        email: "TEST",
-        phone: "TEST",
-        comment: "TEST"
-      },
-      selectedTime: { date: "", time: "", id: 12 },
-      id: "string",
-      title: "string",
-      price: 11,
-      duration: 15,
-      image: "string",
-      paymentType: null
-    }
-  }
+const mockedGoBack = jest.fn();
+
+const mockedNavigation = {
+  navigate: mockedGoBack,
+  canGoBack: mockedCanGoBack,
+  goBack: mockedGoBack,
 };
 
 const feature = loadFeature(
@@ -66,28 +35,190 @@ defineFeature(feature, (test) => {
   });
 
   test("User navigates to AddAppointmentDetails", ({ given, when, then }) => {
-    let filterBlocks: ShallowWrapper;
+    let AddAppointmentDetailsWrapper: ShallowWrapper;
     let instance: AddAppointmentDetails;
 
     given("I am a User loading AddAppointmentDetails", () => {
-      filterBlocks = shallow(<AddAppointmentDetails {...screenProps} />);
-      expect(filterBlocks).toBeTruthy();
-      instance = filterBlocks.instance() as AddAppointmentDetails;
+      AddAppointmentDetailsWrapper = shallow(
+        <AddAppointmentDetails
+          navigation={mockedNavigation as any}
+          id={""}
+          route={{
+            params: {
+              id: "",
+              title: "Title of Appointment",
+              duration: 0,
+              price: 0,
+              currentDate: new Date(),
+              selectedTime: {
+                date: "",
+                time: "",
+                id: 0,
+              },
+              personalDetails: {
+                name: "firstName",
+                email: "example@email.com",
+                phone: "123456789",
+                comment: "Comment message",
+              },
+              image: "",
+              orderID: "",
+              orderDate: "",
+              success: true,
+              paymentType: 'pay_online',
+              currency: {
+                id: 0,
+                name: "",
+                symbol: "",
+              },
+              timeZone: 'Asia/Kolkata',
+              paymentMethod: "Stripe",
+            },
+          }}
+        />
+      );
+      expect(AddAppointmentDetailsWrapper).toBeTruthy();
     });
 
     when("I navigate to the AddAppointmentDetails", () => {
-      instance = filterBlocks.instance() as AddAppointmentDetails;
+      instance = AddAppointmentDetailsWrapper.instance() as AddAppointmentDetails;
     });
 
-    then("AddAppointmentDetails will load with out errors", () => {
-      expect(filterBlocks).toBeTruthy();
+    then("I can navigate back to previous screen", () => {
+      let btnBack = AddAppointmentDetailsWrapper.findWhere(
+        (node) => node.prop("testID") === "btnBack"
+      );
 
-      instance.changePaymentMethod(), instance.cancelTransaction();
+      btnBack.simulate("press");
     });
 
-    then("I can leave the screen with out errors", () => {
-      instance.componentWillUnmount();
-      expect(filterBlocks).toBeTruthy();
+  });
+  test("User navigates to AddAppointmentDetails with out success", ({
+    given,
+    when,
+    then,
+  }) => {
+    let AddAppointmentDetailsWrapper: ShallowWrapper;
+    let instance: AddAppointmentDetails;
+
+    given("I am a User loading AddAppointmentDetails", () => {
+      AddAppointmentDetailsWrapper = shallow(
+        <AddAppointmentDetails
+          navigation={mockedNavigation as any}
+          id={""}
+          route={{
+            params: {
+              id: "",
+              title: "",
+              duration: 0,
+              price: 0,
+              currentDate: new Date(),
+              selectedTime: {
+                date: "",
+                time: "",
+                id: 0,
+              },
+              personalDetails: {
+                name: "",
+                email: "",
+                phone: "",
+                comment: "",
+              },
+              image: "",
+              orderID: "",
+              orderDate: "",
+              success: false,
+              paymentType: null,
+              currency: {
+                id: 0,
+                name: "",
+                symbol: "",
+              },
+              timeZone: undefined,
+              paymentMethod: "Stripe",
+            },
+          }}
+        />
+      );
+      expect(AddAppointmentDetailsWrapper).toBeTruthy();
+    });
+
+    when("I navigate to the AddAppointmentDetails", () => {
+      instance = AddAppointmentDetailsWrapper.instance() as AddAppointmentDetails;
+    });
+
+    then("I can change the payment method", () => {
+      let changePaymentMethodBtn = AddAppointmentDetailsWrapper.findWhere(
+        (node) => node.prop("testID") === "changePaymentMethodBtn"
+      );
+
+      changePaymentMethodBtn.simulate("press"); 
+    });
+
+    then("I can cancel the transaction", () => {
+      let cancelTransactionBtn = AddAppointmentDetailsWrapper.findWhere(
+        (node) => node.prop("testID") === "cancelTransactionBtn"
+      );
+
+      cancelTransactionBtn.simulate("press"); 
+    });
+  });
+  test("User navigates to AddAppointmentDetails without proper data", ({ given, when, then }) => {
+    let AddAppointmentDetailsWrapper: ShallowWrapper;
+    let instance: AddAppointmentDetails;
+
+    given("I am a User loading AddAppointmentDetails", () => {
+      AddAppointmentDetailsWrapper = shallow(
+        <AddAppointmentDetails
+          navigation={mockedNavigation as any}
+          id={""}
+          route={{
+            params: {
+              id: "",
+              title: "Title of Appointment Title of Appointment Title of Appointment Title of Appointment Title of Appointment Title of Appointment Title of Appointment ",
+              duration: 0,
+              price: 0,
+              currentDate: new Date(),
+              selectedTime: {
+                date: "",
+                time: "",
+                id: 0,
+              },
+              personalDetails: {
+                name: "firstName",
+                email: "example@email.com",
+                phone: "123456789",
+                comment: "Comment message",
+              },
+              image: "",
+              orderID: "",
+              orderDate: "",
+              success: true,
+              paymentType: null,
+              currency: {
+                id: 0,
+                name: "",
+                symbol: "",
+              },
+              timeZone: undefined,
+              paymentMethod: "Stripe",
+            },
+          }}
+        />
+      );
+      expect(AddAppointmentDetailsWrapper).toBeTruthy();
+    });
+
+    when("I navigate to the AddAppointmentDetails", () => {
+      instance = AddAppointmentDetailsWrapper.instance() as AddAppointmentDetails;
+    });
+
+    then("I can navigate back to previous screen", () => {
+      let btnBack = AddAppointmentDetailsWrapper.findWhere(
+        (node) => node.prop("testID") === "btnBack"
+      );
+
+      btnBack.simulate("press");
     });
   });
 });
